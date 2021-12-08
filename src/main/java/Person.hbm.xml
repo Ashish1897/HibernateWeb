@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-Jun-2021, 11:47:18 am by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.coforge.training.hibernateweb">
+<class name="Person" table="PERSON" discriminator-value="P">
+<id name="personId">
+<column name="PERSON_ID" />
+<generator class="identity" />
+</id>
+<discriminator column="DISCRIMINATOR" type="string"></discriminator>
+<property name="firstname">
+<column name="FIRST_NAME" />
+</property>
+<property name="lastname">
+</property>
+
+<subclass name="Trainee" extends="Person" discriminator-value="T">
+<property name="departmentName" column="DEPARTMENT_NAME"></property>
+<property name="joiningDate" column="JOINING_DATE" type="date"></property>
+
+</subclass>
+</class>
+</hibernate-mapping>
